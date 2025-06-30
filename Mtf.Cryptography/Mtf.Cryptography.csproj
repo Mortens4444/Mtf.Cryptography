@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <OutputType>Library</OutputType>
+    <DebugType>full</DebugType>
+    <AnalysisLevel>latest-all</AnalysisLevel>
+    <WarningLevel>9999</WarningLevel>
+    <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <DebugSymbols>true</DebugSymbols>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EmbedAllSources>true</EmbedAllSources>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    <IncludeSource>true</IncludeSource>
+    <IncludeSymbols>true</IncludeSymbols>
+    <UseWindowsForms>false</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.Cng" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>

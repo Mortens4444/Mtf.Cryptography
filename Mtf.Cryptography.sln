@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36203.30 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mtf.Cryptography", "Mtf.Cryptography\Mtf.Cryptography.csproj", "{E3E949AB-79EB-4366-8A04-14AEBDE9FE9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mtf.Cryptography.Tests", "Mtf.Cryptography.Tests\Mtf.Cryptography.Tests.csproj", "{3922383F-EDA9-4914-90B7-D5D01C54953B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3E949AB-79EB-4366-8A04-14AEBDE9FE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3E949AB-79EB-4366-8A04-14AEBDE9FE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3E949AB-79EB-4366-8A04-14AEBDE9FE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3E949AB-79EB-4366-8A04-14AEBDE9FE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3922383F-EDA9-4914-90B7-D5D01C54953B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3922383F-EDA9-4914-90B7-D5D01C54953B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3922383F-EDA9-4914-90B7-D5D01C54953B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3922383F-EDA9-4914-90B7-D5D01C54953B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4285618-C974-49EB-B5E5-169E2D9FF9C0}
+	EndGlobalSection
+EndGlobal

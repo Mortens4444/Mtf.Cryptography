@@ -4,56 +4,56 @@ setlocal enabledelayedexpansion
 set "ProjectName=Mtf.Cryptography"
 set "TargetDir=C:\NuGetTest"
 
-for %%F in ("%TargetDir%\%ProjectName%.*.nupkg") do (
-    set "FileName=%%~nxF"
-    if not "!FileName!" == "!FileName:.symbols=!" (
-        echo Deleting: %%F
-        del "%%F"
-    )
-)
+REM for %%F in ("%TargetDir%\%ProjectName%.*.nupkg") do (
+    REM set "FileName=%%~nxF"
+    REM if not "!FileName!" == "!FileName:.symbols=!" (
+        REM echo Deleting: %%F
+        REM del "%%F"
+    REM )
+REM )
 
-for %%F in ("%TargetDir%\%ProjectName%.*.nupkg") do call :ProcessFile "%%F"
-goto :UpdatePackages
+REM for %%F in ("%TargetDir%\%ProjectName%.*.nupkg") do call :ProcessFile "%%F"
+REM goto :UpdatePackages
 
-:ProcessFile
-set "FilePath=%~1"
-set "FileName=%~nx1"
+REM :ProcessFile
+REM set "FilePath=%~1"
+REM set "FileName=%~nx1"
 
-call set "RestPart=%%FileName:%ProjectName%.=%%"
-echo !RestPart! | findstr /R "^[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*" >nul
+REM call set "RestPart=%%FileName:%ProjectName%.=%%"
+REM echo !RestPart! | findstr /R "^[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*" >nul
 
-if !errorlevel! == 0 (
-    echo Deleting: !FilePath!
-    del "!FilePath!"
-)
+REM if !errorlevel! == 0 (
+    REM echo Deleting: !FilePath!
+    REM del "!FilePath!"
+REM )
 
-goto :eof
+REM goto :eof
 
-:UpdatePackages
+REM :UpdatePackages
 
-for /R %%P in (*.csproj) do (
-    echo Checking: %%~nxP
-    pushd %%~dpP
-    FOR /F "tokens=1,2,*" %%A IN ('dotnet list package --outdated --source "%TargetDir%"') DO (
-        IF "%%A"==">" (
-            set "PackageName=%%B"
-            echo   Updating: !PackageName! in %%~nxP
-            dotnet add package !PackageName! -s "%TargetDir%"
-            IF ERRORLEVEL 1 (
-                echo     Error: !PackageName! update failed.
-            ) ELSE (
-                echo     OK: !PackageName! update success.
-            )
-            echo.
-        )
-    )
-    popd
-)
+REM for /R %%P in (*.csproj) do (
+    REM echo Checking: %%~nxP
+    REM pushd %%~dpP
+    REM FOR /F "tokens=1,2,*" %%A IN ('dotnet list package --outdated --source "%TargetDir%"') DO (
+        REM IF "%%A"==">" (
+            REM set "PackageName=%%B"
+            REM echo   Updating: !PackageName! in %%~nxP
+            REM dotnet add package !PackageName! -s "%TargetDir%"
+            REM IF ERRORLEVEL 1 (
+                REM echo     Error: !PackageName! update failed.
+            REM ) ELSE (
+                REM echo     OK: !PackageName! update success.
+            REM )
+            REM echo.
+        REM )
+    REM )
+    REM popd
+REM )
 
 for /f %%V in ('powershell -ExecutionPolicy Bypass -File ".\IncrementPackageVersion.ps1" -CsprojFile "%ProjectName%\%ProjectName%.csproj"') do set "PackageVersion=%%V"
-git add -A
-git commit -m "%ProjectName% NuGet package release %PackageVersion%"
-git push
+REM git add -A
+REM git commit -m "%ProjectName% NuGet package release %PackageVersion%"
+REM git push
 
 dotnet pack --include-symbols --include-source %ProjectName%\%ProjectName%.csproj -c Release /p:IncludeSymbols=true /p:IncludeSource=true /p:DebugType=full /p:EmbedAllSources=true /p:Deterministic=true
 move .\%ProjectName%\bin\Release\*.nupkg %TargetDir%

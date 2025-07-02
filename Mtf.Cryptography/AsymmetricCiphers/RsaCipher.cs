@@ -1,7 +1,9 @@
-﻿using Mtf.Cryptography.Extensions;
+﻿using Mtf.Cryptography.Converters;
+using Mtf.Cryptography.Extensions;
 using Mtf.Cryptography.Interfaces;
-using Mtf.Cryptography.KeyLoader;
+using Mtf.Cryptography.KeyLoaders;
 using System;
+using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -12,7 +14,7 @@ namespace Mtf.Cryptography.AsymmetricCiphers
     /// This approach encrypts data in blocks and is secure for practical use,
     /// unlike byte-by-byte textbook RSA.
     /// </summary>
-    public class RsaCipher : IAsymmetricCipher, IDisposable
+    public class RsaCipher : IRsaCipher, IDisposable
     {
         private RSA rsaInstance;
         private readonly bool canDecrypt;
@@ -20,6 +22,8 @@ namespace Mtf.Cryptography.AsymmetricCiphers
         private bool disposed;
 
         public RSAParameters PublicKeyParameters { get; }
+
+        public byte[] PublicKey => RsaParametersConverter.ToByteArray(PublicKeyParameters);
 
         /// <summary>
         /// Initializes a new instance of the RsaCipher class using keys from a file.

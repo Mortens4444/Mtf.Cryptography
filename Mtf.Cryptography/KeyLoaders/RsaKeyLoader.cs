@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace Mtf.Cryptography.KeyLoader
+namespace Mtf.Cryptography.KeyLoaders
 {
     public static class RsaKeyLoader
     {

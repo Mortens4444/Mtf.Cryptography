@@ -1,6 +1,6 @@
 ﻿using Mtf.Cryptography.AsymmetricCiphers;
 using Mtf.Cryptography.Extensions;
-using Mtf.Cryptography.KeyGenerator;
+using Mtf.Cryptography.KeyGenerators;
 using System.Security.Cryptography;
 
 namespace Mtf.Cryptography.Tests.AsymmetricCiphers

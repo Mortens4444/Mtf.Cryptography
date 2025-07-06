@@ -3,7 +3,6 @@ using Mtf.Cryptography.Extensions;
 using Mtf.Cryptography.Interfaces;
 using Mtf.Cryptography.KeyLoaders;
 using System;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -16,6 +15,8 @@ namespace Mtf.Cryptography.AsymmetricCiphers
     /// </summary>
     public class RsaCipher : IRsaCipher, IDisposable
     {
+        public const string RsaKeyHeader = "RSA key:";
+
         private RSA rsaInstance;
         private readonly bool canDecrypt;
         private readonly RSAEncryptionPadding padding;
@@ -24,6 +25,8 @@ namespace Mtf.Cryptography.AsymmetricCiphers
         public RSAParameters PublicKeyParameters { get; }
 
         public byte[] PublicKey => RsaParametersConverter.ToByteArray(PublicKeyParameters);
+
+        public string Header => "RSA key:";
 
         /// <summary>
         /// Initializes a new instance of the RsaCipher class using keys from a file.
